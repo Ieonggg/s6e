@@ -6,6 +6,58 @@ export default {
   name: 'App',
   components: {
         AppMenu
+    },
+    methods: {
+        checkTime() {
+            let d = new Date();
+            let h = d.getHours();
+            let m = d.getMinutes();
+            if (m < 10) {
+                let timeNow = `${h}0${m}`;
+                //console.log(timeNow)
+                return timeNow;
+            } else {
+                let timeNow = `${h}${m}`;
+                //console.log(timeNow)
+                return timeNow;
+            }
+        },
+        checkTodayDate() {
+            const d = new Date();
+            let day = d.getDate();
+            let month = d.getMonth();
+            const year = d.getFullYear();
+            const weekday = d.getDay();
+            if (month + 1 < 10) {
+              month = `0${month + 1}`;
+            } else {
+              month = `${month + 1}`;
+            }
+            if (day < 10) {
+              day = `0${day}`;
+            }
+            const todayDate = `${year}${month}${day}`;
+            return [todayDate, weekday];
+        },
+        checkTmrDate() {
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            let day = tomorrow.getDate();
+            let month = tomorrow.getMonth();
+            const year = tomorrow.getFullYear();
+            const weekday = tomorrow.getDay();
+            if (month + 1 < 10) {
+                month = `0${month + 1}`;
+            } else {
+                month = `${month + 1}`;
+            }
+            if (day < 10) {
+              day = `0${day}`;
+            }
+            const tomorrowDate = `${year}${month}${day}`;
+            return [tomorrowDate, weekday];
+        },
     }
 }
 </script>
