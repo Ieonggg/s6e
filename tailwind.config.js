@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    color: {
+      'outlineColor': '#fcfbec',
+    }
   },
   plugins: [],
   transitionProperty: {

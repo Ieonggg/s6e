@@ -1,11 +1,13 @@
 <script>
 import AppMenu from './components/AppMenu.vue';
+import TopBar from './components/TopBar.vue';
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 export default {
   name: 'App',
   components: {
-        AppMenu
+        AppMenu,
+        TopBar
     },
     methods: {
         checkTime() {
@@ -63,6 +65,7 @@ export default {
 </script>
 
 <template>
+    <TopBar />
     <router-view></router-view>
     <AppMenu />
 </template>
