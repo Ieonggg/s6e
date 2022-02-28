@@ -1,10 +1,15 @@
 <script>
 import AppMenu from './components/AppMenu.vue';
 import TopBar from './components/TopBar.vue';
+import { Capacitor } from '@capacitor/core';
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 export default {
   name: 'App',
+  data() {
+      return {
+      }
+  },
   components: {
         AppMenu,
         TopBar
@@ -60,13 +65,18 @@ export default {
             const tomorrowDate = `${year}${month}${day}`;
             return [tomorrowDate, weekday];
         },
+        isNative() {
+            return Capacitor.isNativePlatform();
+        }
     }
 }
 </script>
 
 <template>
     <TopBar />
-    <router-view></router-view>
+    <div :class="isNative() ? 'pt-32' : 'pt-24'">
+        <router-view></router-view>
+    </div>
     <AppMenu />
 </template>
 

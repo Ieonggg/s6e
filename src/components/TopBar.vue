@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full p-8 shadow-xl fixed flex flex-row justify-between items-center mx-auto" id="safeArea">
+  <div class="w-full p-8 top-0 shadow-xl fixed flex flex-row justify-between items-center mx-auto" id="safeArea" :class="isNative? 'pt-16' : ''" style="background-color: #fcfbec;">
 
         <div class="md:ml-7">
             <svg class="mx-auto" width="169" height="29" viewBox="0 0 169 29" fill="none"
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import { Capacitor } from '@capacitor/core';
 import TopBarAccountRing from './TopBarAccountRing.vue';
 
 export default {
@@ -39,7 +40,7 @@ export default {
     },
     data() {
         return {
-            
+            isNative: Capacitor.isNativePlatform()
         }
     },
     mounted() {

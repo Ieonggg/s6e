@@ -4,15 +4,13 @@
       flex flex-col
       items-center
       shadow-2xl
-      mt-10
-      mb-8
       mx-7
+      mt-10
       p-12
       rounded-3xl
-      space-y-6
     "
   >
-    <!-- <img src="../assets/singleDoGhost.gif" alt=""> -->
+    <img src="../../assets/singleDoGhost.gif" alt="" class="bg-transparent">
   </div>
 </template>
 

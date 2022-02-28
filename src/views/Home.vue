@@ -1,7 +1,7 @@
 <template>
     
     <div id="home">
-    <!-- <CountDownPanel /> -->
+    <CountDownPanel />
 
     </div>
 </template>

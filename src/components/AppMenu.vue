@@ -13,7 +13,7 @@
       </div>
     </button>
     <div class="w-full h-full bg-white flex flex-row flex-wrap justify-center content-start p-5 overflow-auto">
-      <MiniApplication appName="值日" appDestination="Home" class="bg-gradient-to-l from-green-300 via-blue-500 to-purple-600">
+      <MiniApplication appName="值日" appDestination="Duties" class="bg-gradient-to-l from-green-300 via-blue-500 to-purple-600" v-on:click="isOpen = false">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
       </MiniApplication>
       <MiniApplication appName="抽籤" appDestination="Home" class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">

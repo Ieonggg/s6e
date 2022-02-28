@@ -7,7 +7,10 @@ module.exports = {
     extend: {},
     color: {
       'outlineColor': '#fcfbec',
-    }
+    },
+    fontFamily: {
+      productSans: "'Product Sans', Arial",
+    },
   },
   plugins: [],
   transitionProperty: {

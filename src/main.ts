@@ -2,9 +2,11 @@ import { createApp, VueElement, h } from 'vue'
 import App from './App.vue'
 import './index.css'
 import Home from './views/Home.vue';
+import Duties from './views/Duties.vue';
 import { createRouter, createWebHistory } from 'vue-router'
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyCD8lAxCGDpMwmMMrpMOWhlYB5X6CV8x94",
@@ -24,6 +26,11 @@ const routes = [
         name: 'Home',
         component: Home,
     },
+    {
+        path: '/Duties',
+        name: 'Duties',
+        component: Duties
+    }
 ]
 
 const router = createRouter({
@@ -33,6 +40,8 @@ const router = createRouter({
 
 const firebaseApp = initializeApp(firebaseConfig);
 const analytics = getAnalytics(firebaseApp);
+
+
 
 const app = createApp({
     render: () => h(App)

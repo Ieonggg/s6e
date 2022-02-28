@@ -5,8 +5,7 @@
         flex flex-row
         px-10
         md:px-20
-        pt-20
-        pb-10
+        py-10
         items-center
       "
         
@@ -80,10 +79,9 @@
 </template>
 
 <script>
-// import unlinkedContainer from '../components/3BtnUnlinkedContainer.vue'
-import firebase from "firebase/app";
-import 'firebase/auth'
-import 'firebase/firestore'
+// import 'firebase/auth'
+import { getFirestore } from "firebase/firestore";
+import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
 
 export default {
   name: "Duties",
@@ -94,21 +92,23 @@ export default {
     };
   },
   mounted() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        firebase.firestore().collection('users').doc(user.uid).get().then((doc) => {
-          if (doc.exists) {
-            this.userLevel = doc.data().group;
-          }
-        })
-      } else {
-        // console.log(this.userLevel)
+    const db = getFirestore();
+    // firebase.auth().onAuthStateChanged((user) => {
+    //   if (user) {
+    //     firebase.firestore().collection('users').doc(user.uid).get().then((doc) => {
+    //       if (doc.exists) {
+    //         this.userLevel = doc.data().group;
+    //       }
+    //     })
+    //   } else {
+    //     // console.log(this.userLevel)
         
-      }
-    });
+    //   }
+    // });
 
-    const recordsRef = firebase.firestore().collection("duties").orderBy("date", "desc");
-    recordsRef.onSnapshot((snapshot) => {
+    const recordsRef = query(collection(db, 'duties'), orderBy("date", "desc"));
+    // firebase.firestore().collection("duties").orderBy("date", "desc");
+    onSnapshot(recordsRef, (snapshot) => {
       let records = [];
       snapshot.forEach((doc) => {
         records.push({ ...doc.data(), id: doc.id });

@@ -2,14 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-#home {
-  
-}
-
-#app {
-    
-}
-
-#safeArea {
-  margin-top: calc(env(safe-area-inset-top) + 2rem);
+@layer base {
+    @font-face {
+        font-family: "Product Sans";
+        src: url("https://api.quahk.com/fonts/Product-Sans-Regular.ttf") format("truetype"),
+        url("https://api.quahk.com/fonts/Product-Sans-Regular.ttf") format("ttf");
+    }
 }
