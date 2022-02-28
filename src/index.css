@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#home {
+  
+}
+
+#app {
+    
+}
+
+#safeArea {
+  margin-top: calc(env(safe-area-inset-top) + 2rem);
+}

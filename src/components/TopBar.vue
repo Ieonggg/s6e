@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full p-8 shadow-xl fixed flex flex-row justify-between items-center mx-auto" id="saveArea">
+  <div class="w-full p-8 shadow-xl fixed flex flex-row justify-between items-center mx-auto" id="safeArea">
 
         <div class="md:ml-7">
             <svg class="mx-auto" width="169" height="29" viewBox="0 0 169 29" fill="none"
