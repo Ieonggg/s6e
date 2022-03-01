@@ -4,6 +4,8 @@ import './index.css'
 import Home from './views/Home.vue';
 import Duties from './views/Duties.vue';
 import DutiesRegistation from './views/DutiesRegistation.vue';
+import ProfilePage from './views/ProfilePage.vue';
+import LoginPortal from './views/LoginPortal.vue';
 import { createRouter, createWebHistory } from 'vue-router'
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -36,6 +38,16 @@ const routes = [
         path: '/Duties/Registation',
         name: 'DutiesRegistation',
         component: DutiesRegistation
+    },
+    {
+        path: '/Profile',
+        name: 'ProfilePage',
+        component: ProfilePage
+    },
+    {
+        path: '/login',
+        name: 'LoginPortal',
+        component: LoginPortal
     }
 ]
 

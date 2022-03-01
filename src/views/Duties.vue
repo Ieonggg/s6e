@@ -137,14 +137,14 @@ export default {
     });
   },
   methods: {
-    toRegistation() {
+    async toRegistation() {
       const db = getFirestore();
       const auth = getAuth();
       const user = auth.currentUser;
       
       if (user) {
         const userRef = doc(db, 'users', user.uid);
-        const userSnap = getDoc(userRef);
+        const userSnap = await getDoc(userRef);
         if (userSnap.exists()) {
           if (userSnap.data().group === 'root' || userSnap.data().group === 'admin' || userSnap.data().group === 'subAdmin') {
             this.$router.push('/Duites/Registation');
@@ -157,10 +157,6 @@ export default {
       } else {
         this.notPermitDialog = true;
       }
-
-      
-
-      
     },
   }
 };
