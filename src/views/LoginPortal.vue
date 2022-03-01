@@ -22,8 +22,7 @@
     <hr class="h-1 bg-gray-300 text-gray-300" />
 
     <div class="flex flex-col flex-wrap items-center pb-10 md:pt-0 md:px-52">
-      <p class="text-xl mt-10" v-if="procedingLogin" :class="procedingCheck ? 'hidden' : ''"
-      >
+      <p class="text-xl mt-10" v-if="procedingLogin" :class="procedingCheck ? 'hidden' : ''">
         正在登入
       </p>
 

@@ -9,3 +9,21 @@
         url("https://api.quahk.com/fonts/Product-Sans-Regular.ttf") format("ttf");
     }
 }
+
+.rainbow-text {
+  background-image: repeating-linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow 5s ease infinite;
+}
+
+@keyframes rainbow { 
+  0%{background-position:0% 50%}
+  50%{background-position:100% 25%}
+  100%{background-position:0% 50%}
+}
+
+.standard-btn {
+  @apply shadow-lg rounded-md mt-8 py-2 px-8;
+}
