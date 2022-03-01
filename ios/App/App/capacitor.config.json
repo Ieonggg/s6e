@@ -11,11 +11,18 @@
 		"cleartext": true
 	},
 	"plugins": {
-		"FirebaseAuthentication": {
-			"skipNativeAuth": true,
+		"CapacitorFirebaseAuth": {
 			"providers": [
 				"google.com"
-			]
+			],
+			"languageCode": "zh",
+			"nativeAuth": false,
+			"properties": {},
+			"permissions": {
+				"google": [
+					"profile"
+				]
+			}
 		}
 	}
 }

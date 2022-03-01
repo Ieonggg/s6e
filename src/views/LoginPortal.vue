@@ -41,7 +41,7 @@ import { Capacitor } from '@capacitor/core';
 import { getAuth, onAuthStateChanged, signInWithRedirect, GoogleAuthProvider, signOut } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { FirebaseAuthentication } from '@robingenz/capacitor-firebase-authentication';
+import { cfaSignIn } from "quahk-capacitor-firebase-auth";
 
 export default {
     name: 'LoginPortal',
@@ -53,7 +53,7 @@ export default {
     },
     mounted() {
         
-        let auth = getAuth();
+        const auth = getAuth();
         
         onAuthStateChanged(auth, async (user) => {
             if (user) {
@@ -91,7 +91,8 @@ export default {
             
             this.procedingLogin = true;
             if (Capacitor.getPlatform() === 'ios') {
-                await FirebaseAuthentication.signInWithGoogle();
+                cfaSignIn("google.com").subscribe(function (user) {
+          });
             } else {
                 const provider = new GoogleAuthProvider();
                 auth.useDeviceLanguage();

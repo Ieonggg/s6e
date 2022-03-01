@@ -10,8 +10,8 @@
     "@capacitor/core": "^3.4.1",
     "@capacitor/ios": "^3.4.1",
     "@headlessui/vue": "^1.5.0",
-    "@robingenz/capacitor-firebase-authentication": "^0.4.1",
     "firebase": "^9.6.7",
+    "quahk-capacitor-firebase-auth": "^3.1.2-rc.3",
     "vue": "^3.2.25",
     "vue-router": "^4.0.12"
   },

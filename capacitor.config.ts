@@ -13,10 +13,21 @@ const config: CapacitorConfig = {
     "cleartext": true
   },
   plugins: {
-    FirebaseAuthentication: {
-      skipNativeAuth: true,
-      providers: ["google.com"],
-    },
+    "CapacitorFirebaseAuth": {
+      "providers": [
+        "google.com"
+      ],
+      "languageCode": "zh",
+      "nativeAuth": false,
+      "properties": {
+
+      },
+      "permissions": {
+        "google": [
+          "profile"
+        ]
+      }
+    }
   },
 };
 
