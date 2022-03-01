@@ -1,7 +1,7 @@
 <template>
     <div class="md:container mb-8 mx-7 rounded-3xl md:mx-auto mt-10 shadow-2xl">
     <div
-      class="flex flex-row justify-evenly px-10 md:px-20 pt-20 pb-10 items-center">
+      class="flex flex-row justify-evenly px-10 md:px-20 py-10 items-center">
       <router-link
         tag="button"
         :to="{ name: 'Home' }"
@@ -52,8 +52,9 @@ export default {
         }
     },
     mounted() {
-        const auth = getAuth();
-
+        
+        let auth = getAuth();
+        
         onAuthStateChanged(auth, async (user) => {
             if (user) {
                 this.procedingLogin = true;
@@ -69,8 +70,6 @@ export default {
                         uid: user.uid,
                     }, { merge: true })
                     this.$router.push("/Profile");
-                    
-
                 } else {
                     setDoc(doc(db, 'users', user.uid), {
                         displayName: user.displayName,
@@ -89,15 +88,14 @@ export default {
     },
     methods: {
         async signInWithGoogleLocal() {
-            const auth = getAuth();
+            
             this.procedingLogin = true;
             if (Capacitor.getPlatform() === 'ios') {
                 await FirebaseAuthentication.signInWithGoogle();
             } else {
-                
-            const provider = new GoogleAuthProvider();
-            auth.useDeviceLanguage();
-            signInWithRedirect(auth, provider);
+                const provider = new GoogleAuthProvider();
+                auth.useDeviceLanguage();
+                signInWithRedirect(auth, provider);
       }
       // cfaSignIn("google.com").subscribe(function (user) {
       //   //return console.log(user.displayName);
