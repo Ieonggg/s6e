@@ -1,5 +1,5 @@
 <template>
-  <div class="md:container mb-8 mx-7 rounded-3xl md:mx-auto mt-10 shadow-2xl">
+  <div class="md:container mb-8 mx-7 rounded-3xl md:mx-auto mt-10 shadow-2xl ">
     <div
       class="
         flex flex-row
@@ -7,9 +7,8 @@
         md:px-20
         py-10
         items-center
+        justify-evenly space-x-0
       "
-        
-      :class="userLevel === 'admin' || userLevel === 'subAdmin' || userLevel === 'root' ? 'justify-evenly space-x-0' : 'justify-start space-x-8'"
     >
       <router-link tag="button" :to="{ name: 'Home' }">
         <svg
@@ -28,7 +27,7 @@
         </svg>
       </router-link>
       <p class="text-xl font-productSans">值日生 | Duties</p>
-      <router-link v-if="userLevel === 'admin' || userLevel === 'subAdmin' || userLevel === 'root'" tag="button" :to="{ name: 'DutiesRegistration' }">
+      <button>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"
@@ -43,7 +42,7 @@
             d="M12 6v6m0 0v6m0-6h6m-6 0H6"
           />
         </svg>
-      </router-link>
+      </button>
     </div>
   </div>
   <div class="flex flex-col md:flex-row flex-wrap justify-center container md:mx-auto ">
@@ -79,9 +78,9 @@
 </template>
 
 <script>
-// import 'firebase/auth'
+import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
 export default {
   name: "Duties",
@@ -93,19 +92,7 @@ export default {
   },
   mounted() {
     const db = getFirestore();
-    // firebase.auth().onAuthStateChanged((user) => {
-    //   if (user) {
-    //     firebase.firestore().collection('users').doc(user.uid).get().then((doc) => {
-    //       if (doc.exists) {
-    //         this.userLevel = doc.data().group;
-    //       }
-    //     })
-    //   } else {
-    //     // console.log(this.userLevel)
-        
-    //   }
-    // });
-
+    
     const recordsRef = query(collection(db, 'duties'), orderBy("date", "desc"));
     // firebase.firestore().collection("duties").orderBy("date", "desc");
     onSnapshot(recordsRef, (snapshot) => {
@@ -119,6 +106,27 @@ export default {
       // console.log(records);
     });
   },
+  method: {
+    toRegistation() {
+      const db = getFirestore();
+      const auth = getAuth();
+      const user = auth.currentUser;
+
+      const userRef = doc(db, 'users', user.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (userSnap.exists()) {
+        if (userSnap.data().group === 'root' || userSnap.data().group === 'admin' || userSnap.data().group === 'subAdmin') {
+          
+        } else {
+
+        }
+      } else {
+        // No user is signed in.
+      }
+
+    }
+  }
 };
 </script>
 

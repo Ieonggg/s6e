@@ -3,6 +3,7 @@ import App from './App.vue'
 import './index.css'
 import Home from './views/Home.vue';
 import Duties from './views/Duties.vue';
+import DutiesRegistation from './views/DutiesRegistation.vue';
 import { createRouter, createWebHistory } from 'vue-router'
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -30,6 +31,11 @@ const routes = [
         path: '/Duties',
         name: 'Duties',
         component: Duties
+    },
+    {
+        path: '/Duties/Registation',
+        name: 'DutiesRegistation',
+        component: DutiesRegistation
     }
 ]
 
